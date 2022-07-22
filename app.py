@@ -180,8 +180,10 @@ def st_ui():
 	user_file = st.sidebar.file_uploader("Upload a geological column (Excel format)")
 	if user_file is not None:
 		user_depths = pd.read_excel(user_file)
-		user_depths = user_depths['Depth'].values
+		user_depths = user_depths['Depth (m)'].values
+		lithos = user_depths['Salt content (/)'].values[1:-2]
 		geol_column = [d for d in user_depths]
+
 
 	template_data = deepcopy(well_depth_df)
 	towrite = BytesIO()
