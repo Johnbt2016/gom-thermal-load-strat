@@ -90,8 +90,8 @@ path = 'data/'
 
 well_depth_df = pd.read_excel("data/well_depth.xlsx")
 w_depth = well_depth_df['Depth (m)'].values
-lithos =  well_depth_df['Salt content (/)'].values[1:-2]
-
+lithos = well_depth_df['Salt content (/)'].values[1:-2]
+# print(lithos)
 f = 'data/STS_ezRo.csv'
 ro_sts = pd.read_csv(f, sep=';')
 tmax_of = pd.read_excel("data/STS_Tmax_correl.xlsx")
@@ -179,10 +179,16 @@ def st_ui():
 
 	user_file = st.sidebar.file_uploader("Upload a geological column (Excel format)")
 	if user_file is not None:
-		user_depths = pd.read_excel(user_file)
-		user_depths = user_depths['Depth (m)'].values
-		lithos = user_depths['Salt content (/)'].values[1:-2]
+		user_df = pd.read_excel(user_file)
+		user_depths = user_df['Depth (m)'].values
+		user_lithos = user_df['Salt content (/)'].values[1:-2]
 		geol_column = [d for d in user_depths]
+		for lll in user_lithos:
+			geol_column.append(lll)
+
+	else:
+		for lll in lithos:
+			geol_column.append(lll)
 
 
 	template_data = deepcopy(well_depth_df)
@@ -199,12 +205,11 @@ def st_ui():
 
 	# erosion = st.sidebar.slider('Neogene erosion (default = 1000m)',0, 2000, 1000)
 
-	for i in range(1, len(geol_column)):
+	for i in range(1, 16):
 			geol_column[i] *= (1 + depth_uncertainty)
 	
 	# geol_column.append(erosion)
-	for lll in lithos:
-		geol_column.append(lll)
+	
 
 	st.sidebar.latex(r"{\rm Basement\, parameters}")
 
