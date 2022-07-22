@@ -194,7 +194,7 @@ def st_ui():
 	template_data = deepcopy(well_depth_df)
 	towrite = BytesIO()
 	downloaded_file = template_data.to_excel(towrite, encoding='utf-8', index=False, header=True) # write to BytesIO buffer
-	st.sidebar.download_button(label="Download the geological column template", data=towrite.getvalue(), file_name='template_daisi_SA.xlsx', mime="application/vnd.ms-excel")
+	st.sidebar.download_button(label="Download the geological column template", data=towrite.getvalue(), file_name='template_daisi_GOM.xlsx', mime="application/vnd.ms-excel")
 
 	st.sidebar.write("Expand the 'Summary' section in the main window for more info on the below parameters")
 
