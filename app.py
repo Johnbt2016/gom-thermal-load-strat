@@ -357,8 +357,11 @@ def st_ui():
 		ax1.set_xlim([0,max_temperature])
 		
 		if data is not None:
-			ax1.plot(data[:,1], data[:,0], 'ko')
-			ax1.plot(data[:,2], data[:,0], 'ko')
+			try:
+				ax1.plot(data[:,1], data[:,0], 'ko')
+				ax1.plot(data[:,2], data[:,0], 'ko')
+			except:
+				st.write("No valid temperature data. We expect Raw Temperature data in the second column and corrected temperature data in the third column")
 
 		ax1.grid()
 		markers = [([0,max_temperature],[depths[0], depths[0]])]
@@ -401,7 +404,10 @@ def st_ui():
 			min_point = min_Ro
 			ax2.plot(maturity, mid_points, 'o-', c='black')
 			if data is not None:
-				ax2.plot(data[:,4], data[:,0], 'ko')
+				try:
+					ax2.plot(data[:,4], data[:,0], 'ko')
+				except:
+					st.write("No valid EasyRo data")
 
 			ax2.set_xlabel('Easy Ro (%Ro eq.)')
 
@@ -410,7 +416,10 @@ def st_ui():
 			min_point = min_tmax
 			ax2.plot(tmax_d, mid_points, 'o-', c='black')
 			if data is not None:
-				ax2.plot(data[:,3], data[:,0], 'ko')
+				try:
+					ax2.plot(data[:,3], data[:,0], 'ko')
+				except:
+					st.write("No valid TMax data")
 
 			ax2.set_xlabel('Computed TMax (C)')
 
