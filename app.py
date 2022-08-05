@@ -347,7 +347,7 @@ def st_ui():
 	st.subheader(caption)
 	with _lock:
 		fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18,12))
-		ax1.plot(temperature, mid_points, 'ko-', lw = 3)
+		ax1.plot(temperature, mid_points, 'k-', lw = 2)
 		ax1.plot(sts, mid_points, 'o--', c='white')
 		ax1.set_ylim([min_depth,max_depth])
 
