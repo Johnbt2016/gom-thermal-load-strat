@@ -394,7 +394,7 @@ def st_ui():
 					if geol_column[15 + ii] > 0.9:
 						cc = '#BF24B2'
 				
-				p = Polygon(y, facecolor = colors[ii], alpha = alpha)
+				p = Polygon(y, facecolor = cc, alpha = alpha)
 				ax1.add_patch(p)
 				if ii > 1 and m[1][0] - markers[ii-1][1][0] > threshold_display:
 					if 'Hanifa' in layers_dict[ii] or 'Jubaila' in layers_dict[ii]:
