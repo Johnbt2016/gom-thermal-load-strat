@@ -389,6 +389,11 @@ def st_ui():
 			y = np.array([[x1,y1], [x2, y2], [x2, y3], [x1, y4]])
 			if ii >= 0 and ii < 15:
 				alpha = 0.5
+				cc = colors[ii]
+				if ii > 1:
+					if geol_column[15 + ii] > 0.9:
+						cc = '#BF24B2'
+				
 				p = Polygon(y, facecolor = colors[ii], alpha = alpha)
 				ax1.add_patch(p)
 				if ii > 1 and m[1][0] - markers[ii-1][1][0] > threshold_display:
