@@ -358,7 +358,7 @@ def st_ui():
 		
 		if data is not None:
 			try:
-				ax1.plot(data[:,1], data[:,0], 'ko')
+				ax1.plot(data[:,1], data[:,0], 'o', mec = 'black', mfc = "None")
 				ax1.plot(data[:,2], data[:,0], 'ko')
 			except:
 				st.write("No valid temperature data. We expect Raw Temperature data in the second column and corrected temperature data in the third column")
